@@ -1,0 +1,54 @@
+<!--begin contact -->
+<section class="section-white no-padding-bottom" id="contact">
+        
+    <!--begin container-->
+    <div class="container">
+
+        <!--begin row-->
+        <div class="row">
+    
+            <!--begin col-md-6 -->
+            <div class="col-md-6">
+
+                <h4>Me connecté</h4>
+
+                <!--begin success message -->
+                <p class="contact_success_box" style="display:none;">We received your message and you'll hear from us soon. Thank You!</p>
+                <!--end success message -->
+            <!--begin contact form -->
+                <form id="contact-form" class="contact" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+                        
+                    <div *ngIf="isSuccess" class="alert alert-success" role="alert">
+                        <strong>Holy guacamole!</strong> {{message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span (click)="closeAlert()" aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div *ngIf="hasError" class="alert alert-danger" role="alert">
+                        <strong>Holy guacamole!</strong> {{message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span (click)="closeAlert()" aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                     <input class="contact-input white-input" required="" name="contact_names" placeholder="LOGIN*" type="text"  formControlName="email">
+                    <input class="contact-input white-input" required="" name="contact_email" placeholder="Password*" type="password"  formControlName="password">
+                    <button class="contact-submit" type="submit">
+                        Me connecter &nbsp;&nbsp;&nbsp;
+                        <img *ngIf="isPocessing" src="assets/images/loader.gif" width="40" alt="">
+                    </button>
+                  
+                  </form>
+            
+                <!--end contact form -->
+                
+            </div>
+            <!--end col-md-6 -->
+
+        </div>
+        <!--end row-->
+        
+  </div>
+  <!--end container-->
+        
+</section>
+<!--end contact-->
