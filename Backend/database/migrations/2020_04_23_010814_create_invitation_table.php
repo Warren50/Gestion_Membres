@@ -14,10 +14,17 @@ class CreateInvitationTable extends Migration
     public function up()
     {
         Schema::create('invitation', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->BigInteger('group')->unsigned();
-            $table->BigInteger('admin')->unsigned();
-            $table->timestamps();
+            $table->id();
+            $table->unsignedInteger('senderId');
+            $table->unsignedInteger('receiverId');
+            $table->boolean('isActive');
+            $table->enum('status',['waitting','accepted','denied']);
+            $table->date('createdAt');
+            $table->date('answeredAt');
+
+            $table->foreign('senderId')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('receiverId')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 
